@@ -1,0 +1,16 @@
+Servicio principal:
+- Streaming
+- Codigos descuento
+
+Paginas:
+-Index
+-Lista de mensajes (Boton) en la misma pagina
+-Codigos
+-Dinero
+-Perfil
+-Categorias:
+	-Pop
+	-Rock
+	-Punk
+	-Rap
+	-Trap

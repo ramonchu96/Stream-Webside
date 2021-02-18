@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,3 +36,42 @@
 
 
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body id="page-top" class="bg-light">
+
+  <!-- Masthead-->
+  <header class="masthead text-black text-center">
+      <div class="container d-flex align-items-center flex-column" >
+         <!--IMAGEN DEL VIDEO-->
+        <h2>El directo</h2>
+        <img id="play" src="" alt="" class="d-block w-100">
+
+        <script>
+          var socket = io();
+
+          socket.on('stream',(image) => {
+            let img = document.getElementById('play');
+            img.src = image
+          })
+
+        </script>
+         
+
+      </div>
+  </header>
+ 
+  
+ 
+
+</body>
+
+</html>
+
+
+
+>>>>>>> 0c60aa6e9923496e666647d167a0316a171e698a

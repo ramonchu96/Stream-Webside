@@ -1,58 +1,66 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="./socketclient.js"></script>
+       <!--Libreria Socket.io-->
+    <script src="/socket.io/socket.io.js"></script>
 <body id="page-top" class="bg-light">
-
-      <div class="container d-flex align-items-center flex-column" >
-        
-
-          <div class="col-md-4 mx-auto">
-            <div class="card-header">
-              <h4>Editar perfil</h4> 
-            </div>
-           
-            <div class="card-body">
-            
-                  <div class="form-group">
-                     <h5>Nombre de usuario</h5>
-                    <input type="text" class="form-control" name="name" placeholder="Name" value="{{#each userdata}}{{this.name}}{{/each}}">  
-                  </div>
-            
+    <div class="container">
+   
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar perfil</h5>
+        <button type="button" class="btn-primary" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+           <form action="/updateprofile" method="POST" enctype="multipart/form-data">
                    
                     <div class="form-group">
                       <h5>Nombre artistico</h5>
-                    <input type="text" class="form-control" name="name" placeholder="Name" value="Nombre publico">
+                    <input type="text" class="form-control" name="pname" placeholder="Nombre publico" value="{{pname}}">
                   </div>
 
                    <div class="form-group">
                       <h5>Biografia</h5>
-                    <input type="textbox" class="form-control" name="name" placeholder="Cuentanos sobre ti" value="Biografia">
+                    <textarea type="text" class="form-control" name="biography" placeholder="Cuentanos sobre ti" value="{{biography}}"></textarea>
                   </div>
                   
                   <h5>Estilo musical</h5>
                   <div class="form-check">                  
-                    <input type="checkbox" class="form-check-input" id="pop">
+                    <input type="checkbox" class="form-check-input" id="pop" name="pop" value="Pop">
                     <label class="form-check-label" for="same-address">Pop</label>
                   </div>
             
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="rock">
+                    <input type="checkbox" class="form-check-input" id="rock" name="rock" value="Rock">
                     <label class="form-check-label" for="same-address">Rock</label>
                   </div>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="hiphop">
+                    <input type="checkbox" class="form-check-input" id="hiphop" name="hiphop" value="hiphop">
                     <label class="form-check-label" for="same-address">Hip-Hop</label>
                   </div>
+                   <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rap" name="rap" value="Rap">
+                    <label class="form-check-label" for="same-address">Rap</label>
+                  </div>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="trap">
+                    <input type="checkbox" class="form-check-input" id="trap" name="trap" value="Trap">
                     <label class="form-check-label" for="same-address">Trap</label>
                   </div>
             <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="clasica">
-                  <label class="form-check-label" for="same-address">Musica Clasica</label>
+                  <input type="checkbox" class="form-check-input" id="clasica" name="clasica" value="Instrumental">
+                  <label class="form-check-label" for="same-address">Instrumental</label>
+                       <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="flamenco" name="flamenco" value="Flamenco">
+                  <label class="form-check-label" for="same-address">Flamenco</label>
             </div>
-                        
+            
+            <div class="form-group">
+	            <input type="file" name="image" class="form-control"  name="document">       
+            </div>
+
            
             </div>
             
@@ -63,80 +71,160 @@
                 
 
                   </form>
-            </div>
-            
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!--//---------------------------------------------------------//-->
+       <div class="row">
+          <div class="col-md-6 col-lg-4">
+              <div class="title-orange title-image">Perfil</div>
+          </div> 
+          <div class="col-1">
+                <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Ajustes de perfil" data-bs-target="#exampleModal">
+              <img src="img/tool.svg" width="30px" height="30px">
+            </button>
           </div>
-
+          
         </div>
-=======
-<!DOCTYPE html>
-<html lang="en">
-
-<body id="page-top" class="bg-light">
-
-      <div class="container d-flex align-items-center flex-column" >
         
-
-          <div class="col-md-4 mx-auto">
-            <div class="card-header">
-              <h4>Editar perfil</h4> 
-            </div>
-           
-            <div class="card-body">
-            
-                  <div class="form-group">
-                     <h5>Nombre de usuario</h5>
-                    <input type="text" class="form-control" name="name" placeholder="Name" value="{{#each userdata}}{{this.name}}{{/each}}">  
-                  </div>
-            
-                   
-                    <div class="form-group">
-                      <h5>Nombre artistico</h5>
-                    <input type="text" class="form-control" name="name" placeholder="Name" value="Nombre publico">
-                  </div>
-
-                   <div class="form-group">
-                      <h5>Biografia</h5>
-                    <input type="textbox" class="form-control" name="name" placeholder="Cuentanos sobre ti" value="Biografia">
-                  </div>
-                  
-                  <h5>Estilo musical</h5>
-                  <div class="form-check">                  
-                    <input type="checkbox" class="form-check-input" id="pop">
-                    <label class="form-check-label" for="same-address">Pop</label>
-                  </div>
-            
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="rock">
-                    <label class="form-check-label" for="same-address">Rock</label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="hiphop">
-                    <label class="form-check-label" for="same-address">Hip-Hop</label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="trap">
-                    <label class="form-check-label" for="same-address">Trap</label>
-                  </div>
-            <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="clasica">
-                  <label class="form-check-label" for="same-address">Musica Clasica</label>
-            </div>
-                        
-           
-            </div>
-            
-                  <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit">Actualizar</button>
-                  </div>
-                  
-                
-
-                  </form>
-            </div>
-            
-          </div>
-
-        </div>
->>>>>>> 0c60aa6e9923496e666647d167a0316a171e698a
+      <div class="row ">
+        <div class="col-8 card-profile">
        
+          <h5 class="card-title">Nombre:</h5>
+            <p class="p-profile">{{#each profileDetails}}{{pname}}{{/each}}</p>
+          <h5 class="card-title">Biografia:</h5>
+            <p class="p-profile">{{#each profileDetails}}{{biography}}{{/each}}</p>
+            <h5 class="card-title">Estilo musical:</h5>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{pop}}{{/each}}</button>
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{rock}}{{/each}}</button>
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{hiphop}}{{/each}}</button>
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{rap}}{{/each}}</button>
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{trap}}{{/each}}</button>    
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{clasica}}{{/each}}</button>
+        <button type="button" class="btn btn-outline-primary">{{#each profileDetails}}{{flamenco}}{{/each}}</button>    
+          </div>
+        
+            </div>
+        <div class="col-4 card-profile bg-image">
+          <img src={{#each profileDetails}}{{path}}{{/each}} class="image col-6 profile">    
+        </div>
+        
+      </div>
+        <br><br>
+    <div class="row">
+          <div class="col-md-12 col-lg-4">
+              <div class="title-orange title-image">Comenzar directo</div>
+          </div> 
+    </div>
+    <div class="row">
+      <div class="col-12 card-profile">
+      
+          <button type="button" class="btn btn-primary" id="btn">Emitir</button>
+          <div class="col-md-12 col-lg-4">
+            <div class="status title-orange title-image"></div>
+          </div>
+          <div class="row">
+           
+
+            <video src="" id="video" class="col-md-8" autoplay="true" controls="true"></video>
+            <canvas id="preview"></canvas>
+          
+
+            
+            <div id="chat" class="col-md-3 card-chat"></div>
+            <form id="message-form" class="chat-footer" style="margin-left:72%">
+              <div class="input-group">
+                <input type="text" id="message" class="col-md-8 chat-control">
+                  <div class="input-append">
+                  <input type="submit" class="btn btn-primary" style="margin-top: 12px;">
+                  </div>
+              </div>
+            </form>
+          </div>
+         
+         <br>
+    
+    
+      </div>
+    </div>
+        </div>
+        
+ <script>
+
+   var canvas = document.querySelector('#preview');
+   var context = canvas.getContext('2d');
+   var btn = document.querySelector('#btn');
+   canvas.style.display = 'none';
+   canvas.width = 512;
+   canvas.height = 384;
+
+   context.width = canvas.width;
+   context.height = canvas.height;
+
+   var video = document.querySelector('#video');
+    $(function(){
+     
+      const socket = io();
+      //Chat elements interface
+      const $messageForm = $('#message-form');
+      const $messageBox = $('#message'); 
+      const $chat = $('#chat');
+      
+      //User element interface
+      const $user = $('#user');
+      
+      $messageForm.submit(e => {
+        e.preventDefault();
+        socket.emit('send message', $messageBox.val());
+        $messageBox.val('');
+         socket.emit('new message', $user.val(), data =>{
+           
+         });
+        
+      });
+      socket.on('new message', function(data){
+        $chat.append(data + '<br/>');
+      });
+    
+      function publicarMensaje(msg){
+      document.querySelector('.status').innerHTML = msg;
+      }
+      function loadCamera(stream){
+        video.srcObject = stream;
+        publicarMensaje('En directo');
+      }
+      function errorCamera(){
+        publicarMensaje('Herrores en su camara');
+      }
+      function verVideo(video,context){
+        context.drawImage(video,0,0,context.width,context.height);
+        socket.emit('stream',canvas.toDataURL('image/webp'));
+      }
+      btn.addEventListener('click', ()=>{
+        navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
+        if(navigator.getUserMedia){
+          navigator.getUserMedia({
+            video : true,
+            audio: true
+            }, 
+            loadCamera, errorCamera)
+        }
+        var intervalo = setInterval(()=>{
+          verVideo(video,context);
+        }, 50)
+
+      })
+    
+    
+    
+    })
+
+   
+ </script>
+
+
+</body>

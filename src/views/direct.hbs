@@ -1,0 +1,60 @@
+<!--Bootstrap-->
+<script src="/socket.io/socket.io.js"></script>
+<body id="page-top" class="bg-light">
+   
+  <div class="container"> 
+ <!-- Portfolio Grid DIRECTO-->
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="title-orange title-image">En directo</div>
+        </div> 
+    </div>
+      
+    <div class="row">   
+      <img id="play" src="" alt="" class="col-md-8">
+        <div id="chat" class="col-md-3 card-chat"></div>
+              <form id="message-form" class="card-footer" style="margin-left:72%">
+                <div class="input-group">
+                  <input type="text" id="message" class="form-control">
+                    <div class="input-append">
+                    <input type="submit" class="btn btn-primary">
+                    </div>
+                </div>
+              </form>
+    <p class="nametagd col-sl-2">{{#each userData}}{{pname}}{{/each}} || {{#each userData}}{{pop}}{{/each}}{{#each userData}}{{rock}}{{/each}} {{#each userData}}{{rap}}{{/each}} {{#each userData}}{{trap}}{{/each}} {{#each userData}}{{clasica}}{{/each}} {{#each userData}}{{flamenco}}{{/each}}</p>
+    </div>
+    
+  </div>
+
+<script>
+
+  var socket = io();
+  socket.on('stream', (image) => {
+    let img = document.getElementById('play');
+    img.src = image;
+  })
+
+  const $messageForm = $('#message-form');
+      const $messageBox = $('#message'); 
+      const $chat = $('#chat');
+      
+      //User element interface
+      const $user = $('#user');
+      
+      $messageForm.submit(e => {
+        e.preventDefault();
+        socket.emit('send message', $messageBox.val());
+        $messageBox.val('');
+         socket.emit('new message', $user.val(), data =>{
+           
+         });
+        
+      });
+      socket.on('new message', function(data){
+        $chat.append(user+data + '<br/>');
+      });
+  
+
+  </script>
+
+</body>
